@@ -1,0 +1,42 @@
+{
+  "_how_to_use": "Exact field names checked by hand against data/raw/<GSE>/characteristics.txt on Oct 28, 2026. confirmed=true means the counts can be trusted.",
+  "GSE14814": {
+    "confirmed": true,
+    "_checked": "ADC=71 (adeno), SQCC=52, LCUC=10. ACT=71, OBS=62. os_time max ~9-10 -> YEARS. os_status Alive/Dead. dss_time/dss_status also present (secondary outcome). stage written as I/1B (=IB) and II/2A/2B.",
+    "histology": {"key": "histology_type", "adeno_values": "^adc$"},
+    "treatment": {"key": "post_surgical_treatment", "treated_values": "^act$", "untreated_values": "^obs$"},
+    "os_time":   {"key": "os_time", "unit": "years"},
+    "os_event":  {"key": "os_status", "event_values": "^dead$"},
+    "stage":     {"key": "stage"},
+    "age":       {"key": "age"},
+    "sex":       {"key": "sex"}
+  },
+  "GSE68465": {
+    "confirmed": true,
+    "_checked": "443 Lung Adenocarcinoma + 19 Normal (blank clinical fields). Adjuvant chemo Yes=89, No=341, Unknown=13. Adjuvant RT field present (Yes=65). Stage only as pTpN. 4 contributing sites.",
+    "histology": {"key": "disease_state", "adeno_values": "^lung adenocarcinoma$"},
+    "treatment": {"key": "clinical_treatment_adjuvant_chemo", "treated_values": "^yes$", "untreated_values": "^no$"},
+    "os_time":   {"key": "months_to_last_contact_or_death", "unit": "months"},
+    "os_event":  {"key": "vital_status", "event_values": "^dead$"},
+    "stage":     {"key": "disease_stage"},
+    "age":       {"key": "age"},
+    "sex":       {"key": "sex"}
+  },
+  "GSE42127": {
+    "confirmed": true,
+    "_checked": "Adenocarcinoma=133, Squamous=43. had_adjuvant_chemo TRUE=49, FALSE=127. survival_status A/D. overall_survival_months in months.",
+    "histology": {"key": "histology", "adeno_values": "^adenocarcinoma$"},
+    "treatment": {"key": "had_adjuvant_chemo", "treated_values": "^true$", "untreated_values": "^false$"},
+    "os_time":   {"key": "overall_survival_months", "unit": "months"},
+    "os_event":  {"key": "survival_status", "event_values": "^d$"},
+    "stage":     {"key": "final_pat_stage"},
+    "age":       {"key": "age_at_surgery"},
+    "sex":       {"key": "gender"}
+  },
+  "TCGA-LUAD": {
+    "confirmed": true,
+    "_note": "Rule rewritten Oct 28: platinum under Chemotherapy or Pharmaceutical; intent=Adjuvant (window only when intent missing); explicit 'no' = untreated; no record = unknown; neoadjuvant excluded. Confirm after checking the re-run counts. They are: with expression 516 (treated 125, untreated 288, unknown 103)..",
+    "platinum_pattern": "platin",
+    "window_days": [0, 180]
+  }
+}
