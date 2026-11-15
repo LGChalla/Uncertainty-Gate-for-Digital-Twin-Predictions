@@ -9,7 +9,7 @@ Outputs per dataset:
     data/processed/flow_summary.md                all flow tables in one place
 
 The script never looks at the relationship between treatment and survival.
-It counts patients; Survival is analysed only in Step 5.” The paper no longer uses “Experiments 4 and 5.
+It counts patients; Survival is analysed only in Step 5.” 
 """
 
 import argparse
